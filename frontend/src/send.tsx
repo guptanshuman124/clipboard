@@ -6,7 +6,7 @@ const Send = () => {
   const [uniqueCode, setUniqueCode] = useState('');
 
   const handleSend = async () => {
-    if (message.trim() === '') {
+    if (message === '') {
       alert('Please enter a message before sending.');
       return; 
     }
@@ -19,6 +19,9 @@ const Send = () => {
         },
         body: JSON.stringify({ message }),
       });
+
+      console.log(response);
+      console.log(message);
 
       if (!response.ok) {
         throw new Error('Failed to send message');

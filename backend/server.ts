@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import connectDB from './config/db';
 import dotenv from 'dotenv';
+import router  from './route/route';
 
 dotenv.config();
 
@@ -12,13 +13,9 @@ connectDB();
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-
-// Basic route to test the server
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, World!');
-});
+app.use('/api',router);
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on ${port}`);
 });

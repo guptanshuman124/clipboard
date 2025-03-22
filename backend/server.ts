@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import connectDB from './config/db';
 import dotenv from 'dotenv';
 import router  from './route/route';

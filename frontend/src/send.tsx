@@ -20,10 +20,6 @@ const Send = () => {
         body: JSON.stringify({ message }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
-
       const data = await response.json();
       setUniqueCode(data.uniqueCode);
     } catch (error) {

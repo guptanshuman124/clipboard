@@ -1,0 +1,20 @@
+/* General styles for the entire application */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  input, button {
+    font-family: inherit;
+  }

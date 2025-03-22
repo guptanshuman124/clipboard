@@ -20,8 +20,9 @@ const Send = () => {
         },
         body: JSON.stringify({ message,uniqueCode }),
       });
-      console.log('printing response ', response);
-      console.log('printing unique code  ', uniqueCode);
+
+      console.log(response);
+      console.log(message);
 
       if (!response.ok) {
         throw new Error('Failed to send message');

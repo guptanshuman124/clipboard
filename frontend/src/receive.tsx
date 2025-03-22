@@ -5,13 +5,27 @@ const Receive = () => {
   const [code, setCode] = useState('');
   const [receivedMessage, setReceivedMessage] = useState('');
 
-  const handleReceive = () => {
-    // Simulate receiving a message from the server based on the code
-    // In a real application, you would make an API call here
-    if (code === '1234') { // Example code for demonstration
-      setReceivedMessage('This is the received message from the server.');
-    } else {
-      alert('Invalid code. Please try again.');
+  const handleReceive = async () => {
+    if (code.length != 4) {
+      alert('invlid code');
+      return;
+    }
+    try {
+      const responce =await fetch('/api/receive', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code }),
+      });
+
+      console.log(responce);
+
+      const data = await responce.json();
+      setReceivedMessage(data.message);
+    } catch (error) {
+      console.error('Error receiving message:', error);
+      setReceivedMessage('Internal Server Error');
     }
   };
 

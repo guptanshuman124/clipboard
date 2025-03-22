@@ -1,7 +1,4 @@
-const express = require('express');
-const router = express.Router();
 import { Request, Response } from 'express';
-import mongoose from 'mongoose';
 import MessageModel from '../models/message';
 
 // Generate a unique 4-digit code

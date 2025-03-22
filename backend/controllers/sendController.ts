@@ -23,10 +23,11 @@ const sendController = async (req: Request, res: Response) => {
 
         res.status(201).json({
             message: "message saved successfully",
-            data: savedMessage
+            data: savedMessage,
+            uniqueCode: uniqueCode
         });
 
-        res.send(uniqueCode);
+        // res.send(uniqueCode);
     } catch (error) {
         console.error('Error saving message:', error);
         res.status(500).json({ error: "Internal Server Error" });

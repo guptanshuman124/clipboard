@@ -12,16 +12,16 @@ const Send = () => {
     }
 
     try {
-      const response = await fetch('/api/send', {
+      console.log('Sending message:', message);
+      const response = await fetch('http://localhost:3000/api/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ message,uniqueCode }),
       });
-
-      console.log(response);
-      console.log(message);
+      console.log('printing response ', response);
+      console.log('printing unique code  ', uniqueCode);
 
       if (!response.ok) {
         throw new Error('Failed to send message');

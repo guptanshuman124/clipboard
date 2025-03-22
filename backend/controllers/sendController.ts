@@ -1,7 +1,4 @@
-const express = require('express');
-const router = express.Router();
 import { Request, Response } from 'express';
-import mongoose from 'mongoose';
 import MessageModel from '../models/message';
 
 // Generate a unique 4-digit code
@@ -26,7 +23,9 @@ const sendController = async (req: Request, res: Response) => {
             data: savedMessage
         });
 
-        res.send(uniqueCode);
+        res.json({
+            uniqueCode: uniqueCode,
+        })
     } catch (error) {
         console.error('Error saving message:', error);
         res.status(500).json({ error: "Internal Server Error" });

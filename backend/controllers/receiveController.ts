@@ -8,10 +8,14 @@ const receiveController = async (req: Request, res: Response) => {
 
     if (message) {
         res.status(200).json({
-            message: message.message
+            message: message.message,
+            success: true
         });
     }else{
-        res.status(404).json({ error: 'Message not found' });
+        res.status(404).json({
+            message: 'Message not found',
+            success: false
+         });
     }
 };
 

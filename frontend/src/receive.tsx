@@ -6,6 +6,7 @@ const Receive = () => {
   const [receivedMessage, setReceivedMessage] = useState('');
 
   const handleReceive = async () => {
+    setReceivedMessage('');
     if (code.length !== 4) {
       alert('Invalid code');
       return;
@@ -19,9 +20,13 @@ const Receive = () => {
         body: JSON.stringify({ code }),
       });
 
-      const { message } = await response.json();
-      console.log(message);
-      setReceivedMessage(message.message);
+      const { message , success } = await response.json();
+      if(success){
+        setReceivedMessage(message);
+      }else{
+        setCode('');
+        alert(message);
+      }
     } catch (error) {
       console.error('Error receiving message:', error);
       alert('Invalid code');

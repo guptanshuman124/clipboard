@@ -6,12 +6,12 @@ const Receive = () => {
   const [receivedMessage, setReceivedMessage] = useState('');
 
   const handleReceive = async () => {
-    if (code.length != 4) {
-      alert('invlid code');
+    if (code.length !== 4) {
+      alert('Invalid code');
       return;
     }
     try {
-      const responce =await fetch('/api/receive', {
+      const response = await fetch('http://localhost:3000/api/receive', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -19,13 +19,12 @@ const Receive = () => {
         body: JSON.stringify({ code }),
       });
 
-      console.log(responce);
-
-      const data = await responce.json();
-      setReceivedMessage(data.message);
+      const { message } = await response.json();
+      console.log(message);
+      setReceivedMessage(message.message);
     } catch (error) {
       console.error('Error receiving message:', error);
-      setReceivedMessage('Internal Server Error');
+      alert('Invalid code');
     }
   };
 

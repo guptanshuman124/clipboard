@@ -35,8 +35,8 @@ const Send = () => {
   return (
     <div className="container">
       <div className="input-container">
-        <input
-          type="text"
+        <textarea className='input'
+          required
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Enter your message"

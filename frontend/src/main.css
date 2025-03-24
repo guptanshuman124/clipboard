@@ -1,46 +1,27 @@
-/* Styles specific to the main component */
-.container {
+.header{
+    display: flex;
+    height:20%;
+    width:inherit;
+    margin:10px;
+    padding:10px;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-size: 4rem;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 5px;
+    margin:0;
+    text-align:center;
+}
+
+.toggle{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 20px;
-  }
-  
-  .input-container, .button-container, .message-container {
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 20px;
-  }
-  
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  @media (max-width: 600px) {
-    .container {
-      padding: 10px;
-    }
-  
-    input[type="text"], button {
-      font-size: 14px;
-    }
-  }
+    height:80%;
+    width:inherit;
+}

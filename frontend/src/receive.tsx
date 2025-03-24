@@ -5,6 +5,10 @@ const Receive = () => {
   const [code, setCode] = useState('');
   const [receivedMessage, setReceivedMessage] = useState('');
 
+  const hadleCopy = () => {
+    navigator.clipboard.writeText(receivedMessage);
+  };
+
   const handleReceive = async () => {
     setReceivedMessage('');
     if (code.length !== 4) {
@@ -49,6 +53,7 @@ const Receive = () => {
       </div>
       {receivedMessage && (
         <div className="message-container">
+          <button onClick={hadleCopy}>copy to clipboard</button>
           <p>{receivedMessage}</p>
         </div>
       )}

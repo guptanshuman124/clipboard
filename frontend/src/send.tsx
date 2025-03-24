@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './send.css';
+import './toast.css';
 import resetImg from './assets/reset-svgrepo-com.svg';
 
 const Send = () => {
@@ -10,7 +13,7 @@ const Send = () => {
   const handleSend = async () => {
     setUniqueCode('');
     if (message === '') {
-      alert('Please enter a message before sending.');
+      toast.error('Please enter a message before sending.');
       return; 
     }
 
@@ -21,7 +24,7 @@ const Send = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message}),
+        body: JSON.stringify({ message }),
       });
 
       if (!response.ok) {
@@ -31,8 +34,9 @@ const Send = () => {
       const data = await response.json();
       setUniqueCode(data.uniqueCode);
       setIsLoading(false);
+      toast.success('Message sent successfully!');
     } catch (error) {
-      alert('Failed to send message');
+      toast.error('Failed to send message');
       setIsLoading(false);
     }
   };
@@ -43,6 +47,7 @@ const Send = () => {
 
   return (
     <div className="container">
+      <ToastContainer />
       <button onClick={handleReset} className='resetbtn'>
         <img src={resetImg} alt="reset" className="reset-icon" />
       </button>
@@ -50,6 +55,7 @@ const Send = () => {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Enter your message"
+        disabled={isLoading}
       />
       <button onClick={handleSend} disabled={isLoading}>
         {isLoading ? 'Sending...' : 'Send'}

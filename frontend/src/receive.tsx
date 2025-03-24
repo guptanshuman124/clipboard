@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './receive.css';
+import './toast.css';
 import copyImg from './assets/copy-svgrepo-com.svg';
 
 const Receive = () => {
@@ -8,12 +11,13 @@ const Receive = () => {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(receivedMessage);
+    toast.success('Message copied to clipboard!');
   };
 
   const handleReceive = async () => {
     setReceivedMessage('');
     if (code.length !== 4) {
-      alert('Invalid code');
+      toast.error('Invalid code');
       return;
     }
     try {
@@ -25,16 +29,17 @@ const Receive = () => {
         body: JSON.stringify({ code }),
       });
 
-      const { message , success } = await response.json();
-      if(success){
+      const { message, success } = await response.json();
+      if (success) {
         setReceivedMessage(message);
-      }else{
+        toast.success('Message received successfully!');
+      } else {
         setCode('');
-        alert(message);
+        toast.error(message);
       }
     } catch (error) {
       console.error('Error receiving message:', error);
-      alert('Invalid code');
+      toast.error('Failed to receive message');
     }
   };
 
@@ -45,6 +50,7 @@ const Receive = () => {
 
   return (
     <div className="container">
+      <ToastContainer />
       <input
         type="text"
         value={code}
@@ -55,11 +61,12 @@ const Receive = () => {
       <button onClick={handleReceive}>Receive</button>
       {receivedMessage && (
         <div className="message-container">
-          <button onClick={handleCopy} className='copybtn'>
+          <button onClick={handleCopy} className="copybtn">
             <img src={copyImg} alt="Copy" className="copy-icon" />
           </button>
           <textarea
             value={receivedMessage}
+            readOnly
           />
         </div>
       )}

@@ -34,20 +34,15 @@ const Send = () => {
 
   return (
     <div className="container">
-      <div className="input-container">
-        <textarea className='input'
-          required
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Enter your message"
-        />
-      </div>
-      <div className="button-container">
-        <button onClick={handleSend}>Send</button>
-      </div>
+      <textarea className='input'
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Enter your message"
+      />
+      <button onClick={handleSend}>Send</button>
       {uniqueCode && (
-        <div className="message-container">
-          <p>Unique Code: {uniqueCode}</p>
+        <div className="code-received">
+          <p>Your Code: {uniqueCode}</p>
         </div>
       )}
     </div>

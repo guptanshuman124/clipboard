@@ -1,0 +1,55 @@
+input {
+    display: block;
+    border: none;
+    padding: 0;
+    width: calc(4 * (1ch + 0.5ch)); /* Converted SCSS variables to plain CSS */
+    background: repeating-linear-gradient(90deg, 
+      dimgrey 0, dimgrey 1ch, 
+      transparent 0, transparent calc(1ch + 0.5ch)) 
+      0 100%/ calc(4 * (1ch + 0.5ch) - 0.5ch) 2px no-repeat;
+    font: 3ch 'Droid Sans Mono', consolas, monospace;
+    letter-spacing: 0.5ch;
+  }
+  
+  input:focus {
+    outline: none;
+    color: rgb(80, 61, 61);
+  }
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1;
+    position: relative;
+  }
+  
+  textarea {
+    width: 100%;
+    flex-grow: 1;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    border: 0;
+    resize: none;
+  }
+  
+  .copybtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .copy-icon {
+    width: 24px;
+    height: 24px;
+  }

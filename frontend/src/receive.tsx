@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import './receive.css';
+import copyImg from './assets/copy-svgrepo-com.svg';
 
 const Receive = () => {
   const [code, setCode] = useState('');
   const [receivedMessage, setReceivedMessage] = useState('');
 
-  const hadleCopy = () => {
+  const handleCopy = () => {
     navigator.clipboard.writeText(receivedMessage);
   };
 
@@ -37,24 +38,29 @@ const Receive = () => {
     }
   };
 
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '');
+    setCode(value);
+  };
+
   return (
     <div className="container">
-      <div className="input-container">
-        <input
-          type="text"
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-          placeholder="Enter 4-digit code"
-          maxLength={4}
-        />
-      </div>
-      <div className="button-container">
-        <button onClick={handleReceive}>Receive</button>
-      </div>
+      <input
+        type="text"
+        value={code}
+        onChange={handleInput}
+        maxLength={4}
+        pattern="\d*"
+      />
+      <button onClick={handleReceive}>Receive</button>
       {receivedMessage && (
         <div className="message-container">
-          <button onClick={hadleCopy}>copy to clipboard</button>
-          <p>{receivedMessage}</p>
+          <button onClick={handleCopy} className='copybtn'>
+            <img src={copyImg} alt="Copy" className="copy-icon" />
+          </button>
+          <textarea
+            value={receivedMessage}
+          />
         </div>
       )}
     </div>

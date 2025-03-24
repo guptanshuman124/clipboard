@@ -9,7 +9,7 @@ interface Imessage extends Document {
 const messageSchema: Schema = new Schema({
     message: { type: String, required: true },
     uniqueCode: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: Date.now,expires:'1h' },
 });
 
 export default mongoose.model<Imessage>('Message', messageSchema);

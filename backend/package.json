@@ -10,5 +10,9 @@
     "mongoose": "^8.10.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js"
   }
 }

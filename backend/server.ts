@@ -14,13 +14,7 @@ connectDB();
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-app.use(cors({
-  origin: [
-      "https://clipboard-sooty-five.vercel.app"
-  ],
-  methods: ["POST", "GET"],
-  credentials: true
-}));
+
 app.use('/api',router);
 
 // Start the server

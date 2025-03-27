@@ -19,7 +19,7 @@ const Send = () => {
 
     try {
       setIsLoading(true);
-      const response = await fetch('http://localhost:3000/api/send', {
+      const response = await fetch('https://clipboard-umber-pi.vercel.app/api/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

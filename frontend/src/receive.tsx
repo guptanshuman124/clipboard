@@ -21,7 +21,7 @@ const Receive = () => {
       return;
     }
     try {
-      const response = await fetch('http://localhost:3000/api/receive', {
+      const response = await fetch('https://clipboard-umber-pi.vercel.app/api/receive', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

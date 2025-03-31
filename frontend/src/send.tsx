@@ -19,7 +19,7 @@ const Send = () => {
 
     try {
       setIsLoading(true);
-      const response = await fetch('${import.meta.env.VITE_API_BASE_URL}/send', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/send`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

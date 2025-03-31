@@ -14,6 +14,7 @@ connectDB();
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+app.use(cors());
 
 app.use('/api',router);
 

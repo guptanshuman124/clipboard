@@ -21,7 +21,7 @@ const Receive = () => {
       return;
     }
     try {
-      const response = await fetch('${import.meta.env.VITE_API_BASE_URL}/receive', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/receive`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

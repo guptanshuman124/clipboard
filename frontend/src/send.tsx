@@ -7,13 +7,11 @@ import resetImg from './assets/reset-svgrepo-com.svg';
 
 const Send = () => {
   const [message, setMessage] = useState('');
-  const [uniqueCode, setUniqueCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSend = async () => {
-    setUniqueCode('');
     if (message === '') {
-      toast.error('Please enter a message before sending.');
+      toast.error('Please enter a message before sending.',{autoClose:1500});
       return; 
     }
 
@@ -32,11 +30,13 @@ const Send = () => {
       }
 
       const data = await response.json();
-      setUniqueCode(data.uniqueCode);
       setIsLoading(false);
-      toast.success('Message sent successfully!');
+      toast.success('Message sent successfully!', { autoClose: 1500 });
+      setMessage('');
+      toast.success("Code copied to clipboard: " + data.uniqueCode,{autoClose: 2500});
+      navigator.clipboard.writeText(data.uniqueCode);
     } catch (error) {
-      toast.error('Failed to send message');
+      toast.error('Failed to send message',{autoClose: 1500 });
       setIsLoading(false);
     }
   };
@@ -51,7 +51,7 @@ const Send = () => {
       <button onClick={handleReset} className='resetbtn'>
         <img src={resetImg} alt="reset" className="reset-icon" />
       </button>
-      <textarea className='input'
+      <textarea
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Enter your message"
@@ -60,11 +60,6 @@ const Send = () => {
       <button onClick={handleSend} disabled={isLoading}>
         {isLoading ? 'Sending...' : 'Send'}
       </button>
-      {uniqueCode && (
-        <div className="code-received">
-          <p>Your Code: {uniqueCode}</p>
-        </div>
-      )}
     </div>
   );
 };

@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 body{
     color: #EFEFEF;
     display: flex;
@@ -20,4 +24,12 @@ body{
     gap:10px;
     padding:10px;
     border-radius: 10px;
+}
+
+@media screen and (max-width: 480px) {
+    html, body {margin: 0; height: 100%; overflow: hidden}
+    #root{
+        width: 90vw;
+        height:95%;
+    }
 }

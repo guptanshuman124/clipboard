@@ -17,7 +17,7 @@ const Receive = () => {
   const handleReceive = async () => {
     setReceivedMessage('');
     if (code.length !== 4) {
-      toast.error('Invalid code');
+      toast.error('Invalid code',{autoClose:1500});
       return;
     }
     try {
@@ -32,14 +32,14 @@ const Receive = () => {
       const { message, success } = await response.json();
       if (success) {
         setReceivedMessage(message);
-        toast.success('Message received successfully!');
+        toast.success('Message received successfully!', { autoClose: 1500 });
       } else {
         setCode('');
         toast.error(message);
       }
     } catch (error) {
       console.error('Error receiving message:', error);
-      toast.error('Failed to receive message');
+      toast.error('Failed to receive message',{autoClose: 1500 });
     }
   };
 

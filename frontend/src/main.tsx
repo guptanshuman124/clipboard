@@ -2,6 +2,7 @@ import { StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import Send from './send';
 import Receive from './receive';
+import { Analytics } from "@vercel/analytics/react"
 import './main.css';
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
 
   return (
     <StrictMode>
+      <Analytics />
       <div className="header">
         <h1>ONCV</h1>
       </div>

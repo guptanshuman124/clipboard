@@ -19,11 +19,9 @@ const sendController = async (req: Request, res: Response) => {
             uniqueCode,
         });
 
-        const savedMessage = await newMessage.save();
+        newMessage.save();
 
         res.status(201).json({
-            message: "message saved successfully",
-            data: savedMessage,
             uniqueCode: uniqueCode
         });
     } catch (error) {

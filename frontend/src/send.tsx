@@ -45,18 +45,6 @@ const Send = () => {
     setMessage('');
   };
   
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Enter" && !isLoading) {
-        handleSend();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [message, isLoading]);
-
   return (
     <div className="container">
       <ToastContainer />
@@ -68,6 +56,12 @@ const Send = () => {
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Enter your message"
         disabled={isLoading}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && !e.shiftKey && !isLoading) {
+            e.preventDefault();
+            handleSend();
+          }
+        }}
       />
       <button onClick={handleSend} disabled={isLoading}>
         {isLoading ? 'Sending...' : 'Send'}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState ,useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './send.css';
@@ -44,6 +44,18 @@ const Send = () => {
   const handleReset = () => {
     setMessage('');
   };
+  
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Enter" && !isLoading) {
+        handleSend();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [message, isLoading]);
 
   return (
     <div className="container">
@@ -56,9 +68,6 @@ const Send = () => {
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Enter your message"
         disabled={isLoading}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') handleSend();
-        }}
       />
       <button onClick={handleSend} disabled={isLoading}>
         {isLoading ? 'Sending...' : 'Send'}

@@ -1,8 +1,5 @@
 // filepath: /Users/grario/PERSONAL SPACE/CODING/PROJECT/online-clipboard/backend/config/db.ts
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const connectDB = async () => {
   try {

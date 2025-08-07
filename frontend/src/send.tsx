@@ -56,6 +56,9 @@ const Send = () => {
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Enter your message"
         disabled={isLoading}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') handleSend();
+        }}
       />
       <button onClick={handleSend} disabled={isLoading}>
         {isLoading ? 'Sending...' : 'Send'}

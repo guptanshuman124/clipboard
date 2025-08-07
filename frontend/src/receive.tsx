@@ -57,6 +57,9 @@ const Receive = () => {
         onChange={handleInput}
         maxLength={4}
         pattern="\d*"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') handleReceive();
+        }}
       />
       <button onClick={handleReceive}>Receive</button>
       {receivedMessage && (
